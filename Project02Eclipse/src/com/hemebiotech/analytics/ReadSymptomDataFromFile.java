@@ -5,9 +5,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+/**
+ * Classe permettant de lire un fichier .txt
+ * @author Marc Lebeau
+ *
+ */
 
-
-public class ReadSymptomDataFromFile implements ISymptomReader {
+public class ReadSymptomDataFromFile implements ISymptomReader {//ReadSymptomsDataFromFile est implementée par ISymptomReader
 
 	private String filepath;
 	
@@ -15,13 +19,17 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	 * 
 	 * @param filepath a full or partial path to file with symptom strings in it, one per line
 	 */
-	public ReadSymptomDataFromFile (String filepath) {
+	public ReadSymptomDataFromFile (String filepath) {//constructeur de la classe ReadSymptomDataFromFile avec son attribut
 		this.filepath = filepath;
 	}
 	
 	@Override
-	public List<String> getSymptoms() {
-		ArrayList<String> result = new ArrayList<String>();
+	public List<String> getSymptoms() { //redefiition de la methode getSymptoms
+		/**
+		 * Renvoie les symptomes
+		 * @return les symptomes
+		 */
+		List<String> result = new ArrayList<>();
 		
 		if (filepath != null) {
 			try {
@@ -34,7 +42,7 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 				}
 				reader.close();
 			} catch (IOException e) {
-				e.printStackTrace();
+				System.err.printf("Le fichier %s n'existe pas.", filepath.toString());
 			}
 		}
 		

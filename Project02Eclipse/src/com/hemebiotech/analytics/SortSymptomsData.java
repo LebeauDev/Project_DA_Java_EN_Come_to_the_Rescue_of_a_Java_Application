@@ -1,28 +1,33 @@
 package com.hemebiotech.analytics;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.TreeMap;
-
+/**
+ * Classe permettant de compter les occurences et de trier le fichier .txt
+ * @author Marc Lebeau
+ *
+ */
 public class SortSymptomsData {
 	
-	public TreeMap<String, Integer> sortingSymptomsData(){
+	public TreeMap<String, Integer> sortingSymptomsData() throws IOException{
 		
 	
 
 	ReadSymptomDataFromFile file = new ReadSymptomDataFromFile ("src/symptoms.txt");
 	
-	List<String> symptomsFile = file.getSymptoms();
+	List<String> symptomsList = file.getSymptoms();
 	
 	TreeMap<String, Integer> symptomsTri =  new TreeMap<>();
 	
-	for (String listSymptoms : symptomsFile) {
-		if (symptomsTri.containsKey(listSymptoms)) {
-			symptomsTri.put(listSymptoms, symptomsTri.get(listSymptoms)+1);
-		}else {
-			symptomsTri.put(listSymptoms, 1);
+
+	for (String symptom : symptomsList) {
+		if (symptomsTri.containsKey(symptom)) { 
+			symptomsTri.put(symptom, symptomsTri.get(symptom)+1);
+		} else {
+			symptomsTri.put(symptom, 1);
 		}
-		
-			}
+	}
 	return symptomsTri;
 }
 

@@ -4,7 +4,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Map;
 import java.util.TreeMap;
-
+/**
+ * Classe permettant de d'éditer un fichier .out
+ * @author Marc Lebeau
+ *
+ */
 public class FileWriterData {
 	public void writeSymptomsData() throws IOException {
 		try {
